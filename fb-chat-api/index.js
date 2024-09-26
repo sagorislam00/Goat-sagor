@@ -589,20 +589,4 @@ function login(loginData, options, callback) {
 	if (utils.getType(callback) !== "Function" && utils.getType(callback) !== "AsyncFunction") {
 		let rejectFunc = null;
 		let resolveFunc = null;
-		returnPromise = new Promise(function (resolve, reject) {
-			resolveFunc = resolve;
-			rejectFunc = reject;
-		});
-		prCallback = function (error, api) {
-			if (error) {
-				return rejectFunc(error);
-			}
-			return resolveFunc(api);
-		};
-		callback = prCallback;
-	}
-	loginHelper(loginData.appState, loginData.email, loginData.password, globalOptions, callback, prCallback);
-	return returnPromise;
-}
-
-module.exports = login;
+		returnPromise = new Promise(function (resolve, reje
